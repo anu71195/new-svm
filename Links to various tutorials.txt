@@ -1,0 +1,45 @@
+
+Hello!
+The links are given below. Sorry for the delay.
+
+Python tutorial : https://developers.google.com/edu/python/
+
+Python/Numpy Tutorial: http://cs231n.github.io/python-numpy-tutorial/
+
+Python beginner exercises: http://www.practicepython.org/
+
+Andrew NG's course: https://www.coursera.org/learn/machine-learning (Do
+the assignments in the link below)
+
+Machine Learning Exercises (with solutions) :
+http://www.johnwittenauer.net/machine-learning-exercises-in-python-part-1/
+
+Topics from Pattern recognition and Machine Learning - Bishop : Chapter
+1(Full) ;
+3.1,3.2 ; 4.1 ;5.1,5.2; 9.1; 12.1
+
+Additional Topics: http://cs231n.github.io/classification/
+
+Regards,
+
+-- 
+Nikhil Nagaraj
+IIT Guwahati
++91-7576918952
++91-8867719629
+nikhilnagaraj.0996@gmail.com
+
+"Be the change you want to see"
+                    - Mahatma Gandhi
+
+
+
+-- 
+Nikhil Nagaraj
+IIT Guwahati
++91-7576918952
++91-8867719629
+nikhilnagaraj.0996@gmail.com
+
+"Be the change you want to see"
+                    - Mahatma Gandhi
