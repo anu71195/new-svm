@@ -4,13 +4,17 @@ import cvxopt#cvxopt is the convex optimization library
 import svm_parameters as param#this library is built and all the parameters and other input will be put there and all other input functions  can be declaed in this file 
 
 '''
+
 to do list
 create read me file
+try implementing gradient descent or batch gradient descent before reading entire convex optimization
+
 
 REad me file ;-
 	add the label details
 	assumption like the data is not continuous that is time is set to 0 whenever label is changed.
 	assumption that the training data is taken at the difference of 0.1 seconds
+
 '''
 
 
