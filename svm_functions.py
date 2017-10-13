@@ -211,7 +211,7 @@ def predict(x,support_multipliers,support_vectors,support_vector_labels,indexing
 	for z_i, x_i, y_i in zip(support_multipliers,support_vectors,support_vector_labels):
 		# result += z_i * y_i[0] * gaussian(x_i, x,sigma)
 		result+=(z_i * gaussian(x_i, x,sigma)* y_i )
-	return result;
+	return result, indexing;
 	result=np.array(result)
 	result=result[0]
 	return result[indexing] , indexing;###added another parameter indexing and corresponding to that this line
