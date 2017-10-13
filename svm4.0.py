@@ -17,7 +17,7 @@ predictor6={};
 predictor7={};
 
 for i in range(Y.shape[1]):
-	temp=Y.T[i].T;
+	temp_y=Y.T[i].T;
 	##these lines are temporary and is reelvant to only first label and not others for now since store.txt contains lagrangean for only label 1 in one vs all classification
 	
 	# fr=open("store.txt","r")#
@@ -29,14 +29,14 @@ for i in range(Y.shape[1]):
 	
 	#uptil these this willbe used right now for fast calculation
 	
-	lagrange_multipliers=svm.compute_multipliers(K,X,temp)##uncomment thiese lines when the temporary lines are removed to calculate the data
+	lagrange_multipliers=svm.compute_multipliers(K,X,temp_y)##uncomment thiese lines when the temporary lines are removed to calculate the data
 	
 	# print(lagrange_multipliers)
 	# print(lagrange_multipliers.size,"sdf")
-	support_multipliers, support_vectors, support_vector_labels=svm.get_parameter_values(X,temp,lagrange_multipliers)
-	print(support_multipliers)
-	print(support_vectors)
-	print(support_vector_labels)
+	support_multipliers, support_vectors, support_vector_labels=svm.get_parameter_values(X,temp_y,lagrange_multipliers)
+	# print(support_multipliers)
+	# print(support_vectors)
+	# print(support_vector_labels)
 	print("time taken after ",i+1,"th lagrangian is ",time.time()-start_time)
 	# print(support_vector_labels)
 	max_index,max_value=svm.predict(X[7000],support_multipliers,support_vectors,support_vector_labels,i)

@@ -6,6 +6,7 @@ import svm_parameters as param#this library is built and all the parameters and 
 '''
 
 to do list
+check and remove the multidmensional dependencies of support_vector_labels
 create read me file
 try implementing gradient descent or batch gradient descent before reading entire convex optimization
 
@@ -201,7 +202,7 @@ def get_parameter_values(X,y,lagrange_multipliers):
         lagrange_multipliers > MIN_SUPPORT_VECTOR_MULTIPLIER
     support_multipliers = lagrange_multipliers[support_vector_indices]
     support_vectors = X[support_vector_indices]
-    support_vector_labels = y[support_vector_indices]##support_vecto_labels is not a row or column matrix_check for validity
+    support_vector_labels = y[support_vector_indices]
     return support_multipliers, support_vectors, support_vector_labels
 
 def predict(x,support_multipliers,support_vectors,support_vector_labels,indexing):
@@ -209,7 +210,8 @@ def predict(x,support_multipliers,support_vectors,support_vector_labels,indexing
 	sigma=param.sigma;
 	for z_i, x_i, y_i in zip(support_multipliers,support_vectors,support_vector_labels):
 		# result += z_i * y_i[0] * gaussian(x_i, x,sigma)
-		result+=(z_i * gaussian(x_i, x,sigma)* y_i[0] )
+		result+=(z_i * gaussian(x_i, x,sigma)* y_i )
+	return result;
 	result=np.array(result)
 	result=result[0]
 	return result[indexing] , indexing;###added another parameter indexing and corresponding to that this line
