@@ -54,6 +54,7 @@ class SVMTrainer(object):
             weights=support_multipliers,
             support_vectors=support_vectors,
             support_vector_labels=support_vector_labels)
+	
 
     def _compute_multipliers(self, X, y):
         n_samples, n_features = X.shape

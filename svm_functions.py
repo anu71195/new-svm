@@ -14,6 +14,7 @@ REad me file ;-
 '''
 
 
+MIN_SUPPORT_VECTOR_MULTIPLIER=param.min_support_vector_multiplier
 
 
 ##function to read the file as given by the user
@@ -59,6 +60,14 @@ def read_training_data():
 	X=np.asmatrix(X)
 	Y=np.asmatrix(Y).T
 	return X,Y;
+
+
+
+
+
+
+
+
 
 def makeitv(X,Y):
 #this function will turn the acceleration in the input to the velocity whenever new label is encountered
@@ -134,6 +143,11 @@ def similarity_matrix(X):
 
 def compute_multipliers(K, X, y):
     n_samples, n_features = X.shape
+    #X.shape returns "rows columns" rows are stored in  n_samples and columsn are stored in n_features
+    #here y is for particular label i.e. it is a binary classification for multiclass classification
+    #what i did is made a Y one vs all label matrix and then pass y for one label at a time to get lagrangean 
+    #for every particular type of label as present in the input;
+    #K is the similarity matrix, X is the input matrix ;
     c=param.c
     # Solves
     # min 1/2 x^T P x + q^T x
@@ -164,3 +178,12 @@ def compute_multipliers(K, X, y):
 
     # Lagrange multipliers
     return np.ravel(solution['x'])
+
+def get_parameter_values(X,y,lagrange_multipliers):
+
+    support_vector_indices = \
+        lagrange_multipliers > MIN_SUPPORT_VECTOR_MULTIPLIER
+    support_multipliers = lagrange_multipliers[support_vector_indices]
+    support_vectors = X[support_vector_indices]
+    support_vector_labels = y[support_vector_indices]
+    return support_multipliers, support_vectors, support_vector_labels
