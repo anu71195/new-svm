@@ -119,6 +119,13 @@ def multiclassY(Y):
 	Y_all=(Y_all*2)-1#converting matrix of 1-0 to 1 and -1 . ... 1 corresponds to 1 and 0 correspondsto -1;
 	return Y_all.T; #returning matrix of size number of examples X labels by transponsing
 
+
+
+def gaussian(x_i,x,sigma):
+    return np.exp(    -( (x_i-x)*(x_i-x).T / (2 * sigma* sigma) )  )
+
+
+
 def gaussian_kernel(x,l,sigma):
 	temp=l-x;#x is a single trainnig exampleof size 1X3 and l is the entire feature matrix with samples*3 size
 #gaussian kernel =exp( -( (x1-x2)^2)   /   (2*sigma*sigma) ) ) 
@@ -187,3 +194,19 @@ def get_parameter_values(X,y,lagrange_multipliers):
     support_vectors = X[support_vector_indices]
     support_vector_labels = y[support_vector_indices]
     return support_multipliers, support_vectors, support_vector_labels
+
+def predict(x,support_multipliers,support_vectors,support_vector_labels):
+	result=0;
+	sigma=param.sigma;
+	for z_i, x_i, y_i in zip(support_multipliers,support_vectors,support_vector_labels):
+		# result += z_i * y_i[0] * gaussian(x_i, x,sigma)
+		result+=(z_i * gaussian(x_i, x,sigma)* y_i[0] )
+	result=np.array(result)
+	result=result[0]
+	max_value=-999999999;
+	max_index=0;
+	for i in range(len(result)):
+		if max_value<result[i]:
+			max_value=result[i];
+			max_index=i;
+	return max_index+1,max_value
