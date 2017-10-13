@@ -197,7 +197,7 @@ def get_parameter_values(X,y,lagrange_multipliers):
         lagrange_multipliers > MIN_SUPPORT_VECTOR_MULTIPLIER
     support_multipliers = lagrange_multipliers[support_vector_indices]
     support_vectors = X[support_vector_indices]
-    support_vector_labels = y[support_vector_indices]
+    support_vector_labels = y[support_vector_indices]##support_vecto_labels is not a row or column matrix_check for validity
     return support_multipliers, support_vectors, support_vector_labels
 
 def predict(x,support_multipliers,support_vectors,support_vector_labels,indexing):
