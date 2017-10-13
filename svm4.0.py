@@ -39,19 +39,19 @@ for i in range(Y.shape[1]):
 	# print(support_vector_labels)
 	print("time taken after ",i+1,"th lagrangian is ",time.time()-start_time)
 	# print(support_vector_labels)
-	max_index,max_value=svm.predict(X[7000],support_multipliers,support_vectors,support_vector_labels)
+	max_index,max_value=svm.predict(X[7000],support_multipliers,support_vectors,support_vector_labels,i)
 	predictor1[max_value]=max_index;
-	max_index,max_value=svm.predict(X[6000],support_multipliers,support_vectors,support_vector_labels)
+	max_index,max_value=svm.predict(X[6000],support_multipliers,support_vectors,support_vector_labels,i)
 	predictor2[max_value]=max_index;
-	max_index,max_value=svm.predict(X[5000],support_multipliers,support_vectors,support_vector_labels)
+	max_index,max_value=svm.predict(X[5000],support_multipliers,support_vectors,support_vector_labels,i)
 	predictor3[max_value]=max_index;
-	max_index,max_value=svm.predict(X[3000],support_multipliers,support_vectors,support_vector_labels)
+	max_index,max_value=svm.predict(X[3000],support_multipliers,support_vectors,support_vector_labels,i)
 	predictor4[max_value]=max_index;
-	max_index,max_value=svm.predict(X[2000],support_multipliers,support_vectors,support_vector_labels)
+	max_index,max_value=svm.predict(X[2000],support_multipliers,support_vectors,support_vector_labels,i)
 	predictor5[max_value]=max_index;
-	max_index,max_value=svm.predict(X[1000],support_multipliers,support_vectors,support_vector_labels)
+	max_index,max_value=svm.predict(X[1000],support_multipliers,support_vectors,support_vector_labels,i)
 	predictor6[max_value]=max_index;	
-	max_index,max_value=svm.predict(X[0],support_multipliers,support_vectors,support_vector_labels)
+	max_index,max_value=svm.predict(X[0],support_multipliers,support_vectors,support_vector_labels,i)
 	predictor7[max_value]=max_index;
 
 

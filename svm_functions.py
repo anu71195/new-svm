@@ -121,8 +121,14 @@ def multiclassY(Y):
 
 
 
-def gaussian(x_i,x,sigma):
-    return np.exp(    -( (x_i-x)*(x_i-x).T / (2 * sigma* sigma) )  )
+def gaussian(y,x,sigma):
+# this is also a gaussian kernel similar to gaussian kernel howeer the only difference between gaussian and gaussian_kernel
+# is that gaussian_kernel  computes similarity array or row at a time i.e. given a feature matrix X and a training 
+# example x then it computes similarities between x and all the training examples in X and gives them as output
+# in the row. However, gaussian simply computes similarity value beteen two training examples given x and y 
+# it calculates similarity using gaussian kernel and return a single real positive value.
+#gaussian kernel =exp( -( (x1-x2)^2)   /   (2*sigma*sigma) ) ) 
+    return np.exp(    -( (y-x)*(y-x).T / (2 * sigma* sigma) )  )
 
 
 
@@ -187,7 +193,6 @@ def compute_multipliers(K, X, y):
     return np.ravel(solution['x'])
 
 def get_parameter_values(X,y,lagrange_multipliers):
-
     support_vector_indices = \
         lagrange_multipliers > MIN_SUPPORT_VECTOR_MULTIPLIER
     support_multipliers = lagrange_multipliers[support_vector_indices]
@@ -195,7 +200,7 @@ def get_parameter_values(X,y,lagrange_multipliers):
     support_vector_labels = y[support_vector_indices]
     return support_multipliers, support_vectors, support_vector_labels
 
-def predict(x,support_multipliers,support_vectors,support_vector_labels):
+def predict(x,support_multipliers,support_vectors,support_vector_labels,indexing):
 	result=0;
 	sigma=param.sigma;
 	for z_i, x_i, y_i in zip(support_multipliers,support_vectors,support_vector_labels):
@@ -203,6 +208,7 @@ def predict(x,support_multipliers,support_vectors,support_vector_labels):
 		result+=(z_i * gaussian(x_i, x,sigma)* y_i[0] )
 	result=np.array(result)
 	result=result[0]
+	return result[indexing] , indexing;###added another parameter indexing and corresponding to that this line
 	max_value=-999999999;
 	max_index=0;
 	for i in range(len(result)):
