@@ -1,7 +1,7 @@
 #the name of the training file i.e. the file from which the machine will be trained
 training_file="2.csv";
 sigma=100000;
-c=1;
+c=1000000;
 min_support_vector_multiplier= 1e-5
 
 

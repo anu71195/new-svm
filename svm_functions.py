@@ -6,6 +6,7 @@ import svm_parameters as param#this library is built and all the parameters and 
 '''
 
 to do list
+update the store.txt with new values.. outdated values need not be removed 
 check and remove the multidmensional dependencies of support_vector_labels
 create read me file
 try implementing gradient descent or batch gradient descent before reading entire convex optimization
@@ -210,15 +211,16 @@ def predict(x,support_multipliers,support_vectors,support_vector_labels,indexing
 	sigma=param.sigma;
 	for z_i, x_i, y_i in zip(support_multipliers,support_vectors,support_vector_labels):
 		# result += z_i * y_i[0] * gaussian(x_i, x,sigma)
+		# print(z_i,y_i)
 		result+=(z_i * gaussian(x_i, x,sigma)* y_i )
-	return result, indexing;
-	result=np.array(result)
-	result=result[0]
-	return result[indexing] , indexing;###added another parameter indexing and corresponding to that this line
-	max_value=-999999999;
-	max_index=0;
-	for i in range(len(result)):
-		if max_value<result[i]:
-			max_value=result[i];
-			max_index=i;
-	return max_index+1,max_value
+	return result, indexing;#remove indexing afterwards
+
+def store_lagranges_file(file_name,data):
+	fw=open(file_name,"w");
+	for i in data:
+		for j in i:
+			file_temp=str(j)+" "
+			fw.write(file_temp)
+		fw.write("\n")
+	fw.close()
+
