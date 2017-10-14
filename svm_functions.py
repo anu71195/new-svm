@@ -207,7 +207,7 @@ def get_parameter_values(X,y,lagrange_multipliers):
     return support_multipliers, support_vectors, support_vector_labels
 
 def predict(x,support_multipliers,support_vectors,support_vector_labels,indexing):
-	result=0;
+	result=1;
 	sigma=param.sigma;
 	for z_i, x_i, y_i in zip(support_multipliers,support_vectors,support_vector_labels):
 		# result += z_i * y_i[0] * gaussian(x_i, x,sigma)
